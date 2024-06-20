@@ -1,4 +1,4 @@
-module go.formulabun.club/srb2kart
+module github.com/Indev450/srb2kart-go
 
 go 1.19
 
