@@ -5,7 +5,7 @@ import (
 	"net"
 	"time"
 
-	"go.formulabun.club/srb2kart/network/info"
+	"github.com/Indev450/srb2kart-go/network/info"
 )
 
 
