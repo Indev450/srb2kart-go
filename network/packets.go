@@ -25,7 +25,9 @@ type PlayerInfo struct {
   Node uint8
   Name [22]byte
   Address [4]uint8
-  Team, Skin, Data uint8
+  Team uint8
+  Skin uint16
+  Data uint8
   Score uint32
   TimeInServer uint16
 }
