@@ -120,7 +120,7 @@ type PlayerInfoEntry struct {
 	Name         string
 	Address      [4]uint8
 	Team         uint8
-	Skin         uint8
+	Skin         uint16
 	Data         uint8
 	Score        uint32
 	TimeInServer uint16
