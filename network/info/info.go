@@ -236,4 +236,3 @@ func parsePlayerInfoPacket(data []byte) (PlayerInfoPacket, error) {
 	}
 	return packet, nil
 }
->>>>>>> 88d5ab7 (Change skin type in player info packet from uint8 to uint16)
