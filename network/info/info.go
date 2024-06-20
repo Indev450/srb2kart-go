@@ -100,7 +100,7 @@ type playerInfoEntryRaw struct {
 	Name         [21 + 1]byte
 	Address      [4]uint8
 	Team         uint8
-	Skin         uint8
+	Skin         uint16
 	Data         uint8
 	Score        uint32
 	TimeInServer uint16
@@ -191,7 +191,7 @@ func parseServerInfoPacket(data []byte) (ServerInfoPacket, error) {
 		FileNeededNum:  packetRaw.FileNeededNum,
 		Time:           packetRaw.Time,
 		LevelTime:      packetRaw.LevelTime,
-		ServerNameRaw: strings.NullTerminated(packetRaw.ServerName[:]),
+		ServerNameRaw:  strings.NullTerminated(packetRaw.ServerName[:]),
 		ServerName:     strings.SafeNullTerminated(packetRaw.ServerName[:]),
 		MapName:        strings.SafeNullTerminated(packetRaw.MapName[:]),
 		MapTitle:       strings.SafeNullTerminated(packetRaw.MapTitle[:]),
@@ -236,3 +236,4 @@ func parsePlayerInfoPacket(data []byte) (PlayerInfoPacket, error) {
 	}
 	return packet, nil
 }
+>>>>>>> 88d5ab7 (Change skin type in player info packet from uint8 to uint16)
