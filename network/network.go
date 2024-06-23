@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/Indev450/srb2kart-go/network/info"
+	"github.com/Indev450/srb2kart-go/env"
 )
 
 
@@ -16,7 +17,12 @@ func GetServerInfo(adress string) (info.ServerInfoPacket, info.PlayerInfoPacket,
 		return info.ServerInfoPacket{}, info.PlayerInfoPacket{}, fmt.Errorf("failed to resolve udp address: %w", err)
 	}
 
-	conn, err := net.DialUDP("udp", nil, udpAddr)
+    localUdpAddr, err := net.ResolveUDPAddr("udp", srb2k_env.HOSTADDR)
+    if err != nil {
+		return info.ServerInfoPacket{}, info.PlayerInfoPacket{}, fmt.Errorf("failed to resolve udp address: %w", err)
+    }
+
+	conn, err := net.DialUDP("udp", localUdpAddr, udpAddr)
 	if err != nil {
 		return info.ServerInfoPacket{}, info.PlayerInfoPacket{}, fmt.Errorf("failed to connect to server: %w", err)
 	}

@@ -7,6 +7,8 @@ import (
 	"io"
 	"net"
 	"time"
+
+	"github.com/Indev450/srb2kart-go/env"
 )
 
 func OpenConnection(address string) (*net.UDPConn, error) {
@@ -14,7 +16,11 @@ func OpenConnection(address string) (*net.UDPConn, error) {
 	if err != nil {
 		return nil, fmt.Errorf("Could not resolve address %s: %s", address, err)
 	}
-	conn, err := net.DialUDP("udp", nil, udpAddr)
+    localUdpAddr, err := net.ResolveUDPAddr("udp", srb2k_env.HOSTADDR)
+    if err != nil {
+		return nil, fmt.Errorf("Could not resolve address %s: %s", srb2k_env.HOSTADDR, err)
+    }
+	conn, err := net.DialUDP("udp", localUdpAddr, udpAddr)
 	if err != nil {
 		return nil, fmt.Errorf("Could not open connection to %s: %s", address, err)
 	}
