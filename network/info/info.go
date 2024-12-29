@@ -92,7 +92,7 @@ func (p ServerInfoPacket) GetPacketType() PacketType {
 
 type playerInfoPacketRaw struct {
 	Header     packetHeader
-	PlayerInfo [32]playerInfoEntryRaw
+	PlayerInfo [127]playerInfoEntryRaw
 }
 
 type playerInfoEntryRaw struct {
